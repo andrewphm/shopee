@@ -1,7 +1,14 @@
+// Pages
+import Homepage from './pages/home';
+
+// Global styles
+import { GlobalStyle } from './GlobalStyle';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <Homepage />
+      <GlobalStyle />
     </div>
   );
 }
