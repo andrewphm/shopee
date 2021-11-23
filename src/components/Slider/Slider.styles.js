@@ -47,6 +47,10 @@ export const InfoContainer = styled.div`
     background-color: transparent;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    :hover {
+      transform: scale(1.05);
+    }
   }
 `;
 
