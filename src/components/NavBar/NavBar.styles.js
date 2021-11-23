@@ -18,10 +18,14 @@ export const Left = styled.div`
   align-items: center;
 `;
 export const Right = styled.div`
+  display: flex;
   flex: 1;
+  justify-content: flex-end;
+  column-gap: 1rem;
 `;
 export const Center = styled.div`
   flex: 1;
+  text-align: center;
 `;
 export const Language = styled.span`
   font-size: 14px;
@@ -37,4 +41,13 @@ export const SearchContainer = styled.div`
 
 export const Input = styled.input`
   border: none;
+`;
+
+export const Logo = styled.h1`
+  font-weight: bold;
+`;
+
+export const MenuItem = styled.div`
+  font-size: 14px;
+  cursor: pointer;
 `;
