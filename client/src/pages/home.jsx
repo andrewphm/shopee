@@ -11,18 +11,17 @@ import {
   Footer,
 } from '../components/index';
 
-const home = () => {
+// Layout
+import Layout from '../components/Layout';
+
+const Home = () => {
   return (
-    <div>
-      <Announcement />
-      <NavBar />
+    <Layout>
       <Slider />
       <Categories />
       <Products />
-      <Newsletter />
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
-export default home;
+export default Home;

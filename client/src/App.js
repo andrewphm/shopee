@@ -1,5 +1,6 @@
 // Pages
-import Homepage from './pages/home';
+import Home from './pages/Home';
+import ProductList from './pages/ProductList';
 
 // Global styles
 import { GlobalStyle } from './GlobalStyle';
@@ -7,7 +8,7 @@ import { GlobalStyle } from './GlobalStyle';
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <ProductList />
       <GlobalStyle />
     </div>
   );

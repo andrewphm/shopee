@@ -16,18 +16,20 @@ export const Container = styled.div`
   p {
     font-size: 24px;
     font-weight: 300;
+    text-align: center;
   }
 `;
 export const InputContainer = styled.div`
-  width: 30%;
+  width: 25%;
   height: 40px;
   background-color: white;
   display: flex;
   justify-content: space-between;
   border: 1px solid lightgrey;
+  margin: 0 auto;
 
   input {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border: none;
     flex: 8;
     text-indent: 10px;
