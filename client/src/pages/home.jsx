@@ -1,26 +1,15 @@
 import React from 'react';
 
 // UI components
-import {
-  NavBar,
-  Announcement,
-  Slider,
-  Categories,
-  Products,
-  Newsletter,
-  Footer,
-} from '../components/index';
-
-// Layout
-import Layout from '../components/Layout';
+import { Slider, Categories, Products } from '../components/index';
 
 const Home = () => {
   return (
-    <Layout>
+    <>
       <Slider />
       <Categories />
       <Products />
-    </Layout>
+    </>
   );
 };
 
