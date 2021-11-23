@@ -22,8 +22,8 @@ const NavBar = () => {
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Search />
             <Input></Input>
+            <Search />
           </SearchContainer>
         </Left>
         <Center>

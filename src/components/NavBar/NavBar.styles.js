@@ -41,6 +41,11 @@ export const SearchContainer = styled.div`
 
 export const Input = styled.input`
   border: none;
+  outline: none;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export const Logo = styled.h1`
