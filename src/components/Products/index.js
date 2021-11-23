@@ -5,6 +5,8 @@ import { Container, Item, Circle, Image, Info, Icon } from './Products.styles';
 
 // Data
 import { popularProducts } from '../../data';
+
+// MUI
 import {
   FavoriteBorderOutlined,
   SearchOutlined,

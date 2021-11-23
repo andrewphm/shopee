@@ -7,6 +7,7 @@ import {
   Slider,
   Categories,
   Products,
+  Newsletter,
 } from '../components/index';
 
 const home = () => {
@@ -17,6 +18,7 @@ const home = () => {
       <Slider />
       <Categories />
       <Products />
+      <Newsletter />
     </div>
   );
 };
