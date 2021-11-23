@@ -41,10 +41,10 @@ export const Info = styled.div`
 
   button {
     color: white;
+    background-color: rgba(0, 0, 0, 0.3);
     font-weight: 600;
     font-size: 1.1.rem;
     padding: 10px;
-    background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     :hover {

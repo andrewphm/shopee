@@ -1,7 +1,13 @@
 import React from 'react';
 
 // UI components
-import { NavBar, Announcement, Slider, Categories } from '../components/index';
+import {
+  NavBar,
+  Announcement,
+  Slider,
+  Categories,
+  Products,
+} from '../components/index';
 
 const home = () => {
   return (
@@ -10,6 +16,7 @@ const home = () => {
       <NavBar />
       <Slider />
       <Categories />
+      <Products />
     </div>
   );
 };
