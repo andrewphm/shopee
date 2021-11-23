@@ -8,7 +8,7 @@ export const sliderItems = [
   },
   {
     id: 2,
-    img: 'https://i.ibb.co/DG69bQ4/2.png',
+    img: 'https://i.imgur.com/DEAdr0b.png',
     title: 'AUTUMN COLLECTION',
     desc: 'SUMMER STYLED ARE HERE. UPGRADE YOUR WARDROBE NOW.',
     bg: 'f5fafd',
@@ -19,5 +19,12 @@ export const sliderItems = [
     title: 'WINTER COLLECTION',
     desc: "DON'T COMPROMISE ON STYLE! GET 30% OFF ON ALL NEW ARRIVALS.",
     bg: 'fcf1ed',
+  },
+  {
+    id: 4,
+    img: 'https://i.imgur.com/DEAdr0b.pngg',
+    title: 'SPRING COLLECTION',
+    desc: 'SUMMER STYLED ARE HERE. UPGRADE YOUR WARDROBE NOW.',
+    bg: 'f5fafd',
   },
 ];

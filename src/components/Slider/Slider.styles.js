@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -11,8 +11,9 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transition: all 0.4s ease-in;
-  transform: translateX(0);
+  transition: all 1s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  scroll-behavior: smooth;
 `;
 
 export const ImgContainer = styled.div`
@@ -56,6 +57,7 @@ export const Slide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 50px;
 `;
 
 export const Arrow = styled.div`

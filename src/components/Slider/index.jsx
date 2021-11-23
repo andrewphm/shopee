@@ -1,8 +1,4 @@
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  Title,
-} from '@material-ui/icons';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
 import React, { useState } from 'react';
 
 // slider data
@@ -20,10 +16,13 @@ import {
 } from './Slider.styles';
 
 const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState();
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const handleClick = (direction) => {
-    if (direction === 'right') {
+    if (direction === 'left') {
+      setSlideIndex(slideIndex === 0 ? slideIndex : slideIndex - 1);
+    } else {
+      setSlideIndex(slideIndex === sliderItems.length - 1 ? 0 : slideIndex + 1);
     }
   };
 
@@ -32,11 +31,12 @@ const Slider = () => {
       <Arrow direction="left" onClick={() => handleClick('left')}>
         <ArrowLeftOutlined />
       </Arrow>
-      <Wrapper>
+
+      <Wrapper id="wrapper" slideIndex={slideIndex}>
         {sliderItems.map((slide) => {
           const { id, title, desc, bg, img } = slide;
           return (
-            <Slide key={id} bg={bg}>
+            <Slide id={id} key={id} bg={bg}>
               <ImgContainer>
                 <Image src={img} />
               </ImgContainer>
