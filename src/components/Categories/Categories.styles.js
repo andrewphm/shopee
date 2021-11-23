@@ -12,10 +12,13 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   height: 500px;
   img {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s ease;
     :hover {
+      transform: scale(1.1);
       filter: grayscale(100%);
     }
   }
