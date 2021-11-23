@@ -1,7 +1,14 @@
 import React from 'react';
 
+// UI Components
+import { ProductContainer } from '../components/index';
+
 const Product = () => {
-  return <></>;
+  return (
+    <>
+      <ProductContainer />
+    </>
+  );
 };
 
 export default Product;
