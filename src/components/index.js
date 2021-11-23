@@ -4,3 +4,4 @@ export { default as Announcement } from './Announcement';
 export { default as Categories } from './Categories';
 export { default as Products } from './Products';
 export { default as Newsletter } from './Newsletter';
+export { default as Footer } from './Footer';

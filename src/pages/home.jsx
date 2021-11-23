@@ -8,6 +8,7 @@ import {
   Categories,
   Products,
   Newsletter,
+  Footer,
 } from '../components/index';
 
 const home = () => {
@@ -19,6 +20,7 @@ const home = () => {
       <Categories />
       <Products />
       <Newsletter />
+      <Footer />
     </div>
   );
 };
