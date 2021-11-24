@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
+// media queries
+import { mobile, tablet } from '../../responsive';
+
 export const Container = styled.div`
   display: flex;
   padding: 2rem 0;
+
+  ${tablet({
+    flexDirection: 'column',
+  })}
 `;
 
 export const Left = styled.div`

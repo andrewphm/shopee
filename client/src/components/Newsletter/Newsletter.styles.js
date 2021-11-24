@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
+// media queries
+import { mobile, tablet } from '../../responsive';
+
 export const Container = styled.div`
   height: 50vh;
+  width: 100%;
   background-color: #fcf5f5;
   display: flex;
   justify-content: center;
@@ -10,28 +14,28 @@ export const Container = styled.div`
   row-gap: 2rem;
 
   h1 {
-    font-size: 70px;
+    font-size: clamp(2rem, 5vw, 60px);
   }
 
   p {
-    font-size: 24px;
+    font-size: clamp(16px, 5vw, 24px);
     font-weight: 300;
     text-align: center;
   }
 `;
 export const InputContainer = styled.div`
+  min-width: 290px;
   width: 25%;
   height: 40px;
   background-color: white;
   display: flex;
-  justify-content: space-between;
   border: 1px solid lightgrey;
   margin: 0 auto;
 
   input {
+    width: 100%;
     font-size: 1.2rem;
     border: none;
-    flex: 8;
     text-indent: 10px;
     :focus {
       outline: none;
@@ -39,7 +43,6 @@ export const InputContainer = styled.div`
   }
 
   button {
-    flex: 1;
     cursor: pointer;
     border: none;
     background-color: teal;

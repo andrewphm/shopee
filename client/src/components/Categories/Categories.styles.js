@@ -12,7 +12,7 @@ export const Container = styled.div`
   width: 100vw;
   gap: 1rem;
 
-  ${mobile({
+  ${tablet({
     flexDirection: 'column',
   })}
 `;
@@ -47,6 +47,7 @@ export const Info = styled.div`
     color: white;
     margin-bottom: 20px;
     text-align: center;
+    font-size: clamp(2rem, 10vw, 35px);
   }
 
   button {
