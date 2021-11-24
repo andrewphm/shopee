@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 10px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -5,12 +5,12 @@ import { tablet, mobile } from '../../responsive';
 
 export const Container = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 50vh;
   display: flex;
   position: relative;
   overflow: hidden;
   ${tablet({
-    height: '50vh',
+    height: '40vh',
   })}
 
   ${mobile({
@@ -33,10 +33,24 @@ export const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   max-height: 700px;
+  position: relative;
+  z-index: 1;
+`;
+
+export const Circle = styled.div`
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: lightsalmon;
+  margin: 0 auto;
+  position: absolute;
+  z-index: -1;
+  top: 40px;
+  left: 100px;
 `;
 
 export const Image = styled.img`
-  height: 80%;
+  height: 100%;
 `;
 
 export const InfoContainer = styled.div`
@@ -77,11 +91,7 @@ export const Slide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 50px;
-
-  ${tablet({
-    height: '50vh',
-  })}
+  padding: 0 100px;
 `;
 
 export const Arrow = styled.div`

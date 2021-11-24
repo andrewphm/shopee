@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //data
 import { categories } from '../../data';
@@ -15,7 +16,9 @@ const CategoryItem = ({ item }) => {
       </ImageWrapper>
       <Info>
         <h1>{title}</h1>
-        <button>SHOP NOW</button>
+        <Link to="/products">
+          <button>SHOP NOW</button>
+        </Link>
       </Info>
     </Item>
   );
