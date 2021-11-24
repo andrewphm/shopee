@@ -1,6 +1,7 @@
 import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Wrapper,
@@ -27,15 +28,23 @@ const NavBar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>SHOPI.</Logo>
+          <Logo>
+            <Link to="/shopi-fe">SHOPI.</Link>
+          </Logo>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign In</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
+            <Link to="/register">Register</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/login">Sign In</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/cart">
+              <Badge badgeContent={2} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </Link>
           </MenuItem>
         </Right>
       </Wrapper>

@@ -21,7 +21,7 @@ function App() {
       <Announcement />
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/shopi-fe" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
         <Route path="/login" element={<Login />} />
