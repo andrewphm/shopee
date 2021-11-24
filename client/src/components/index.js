@@ -7,3 +7,4 @@ export { default as Newsletter } from './Newsletter';
 export { default as Footer } from './Footer';
 export { default as FilterProducts } from './FilterProducts';
 export { default as ProductContainer } from './ProductContainer';
+export { default as Auth } from './Auth';

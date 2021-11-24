@@ -2,6 +2,7 @@
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
+import Login from './pages/Login';
 
 // Routing
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Newsletter />
       <Footer />
