@@ -12,6 +12,8 @@ import {
   CircleOutline,
   Size,
   FilterList,
+  AddToCartContainer,
+  AddToCart,
 } from './ProductContainer.styles';
 
 const ProductContainer = () => {
@@ -86,7 +88,7 @@ const ProductContainer = () => {
             <h3>
               SIZE: <span>{size && size}</span>{' '}
             </h3>
-            <div>
+            <FilterList>
               <Size onClick={handleSizeClick} type="button" value="XS" />
 
               <Size onClick={handleSizeClick} type="button" value="S" />
@@ -94,9 +96,14 @@ const ProductContainer = () => {
               <Size onClick={handleSizeClick} type="button" value="M" />
 
               <Size onClick={handleSizeClick} type="button" value="L" />
-            </div>
+            </FilterList>
           </Filter>
         </FilterContainer>
+        <AddToCartContainer>
+          <AddToCart>
+            {size && colour ? 'ADD TO CART' : 'Choose a size and colour'}
+          </AddToCart>
+        </AddToCartContainer>
       </InfoContainer>
     </Container>
   );

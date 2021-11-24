@@ -85,3 +85,22 @@ export const Size = styled.input`
     background-color: black;
   }
 `;
+
+export const AddToCartContainer = styled.div`
+  width: 100%;
+`;
+
+export const AddToCart = styled.button`
+  cursor: pointer;
+  width: 60%;
+  height: 3rem;
+  font-weight: 600;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 5px 9px;
+
+  :hover {
+    opacity: 0.8;
+  }
+`;
