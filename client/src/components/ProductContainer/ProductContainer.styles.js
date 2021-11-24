@@ -34,7 +34,6 @@ export const Image = styled.img`
 export const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 1.2rem;
 `;
 
 export const Filter = styled.div`
@@ -42,30 +41,47 @@ export const Filter = styled.div`
   flex-direction: column;
   padding: 16px 0;
   row-gap: 1rem;
-`;
 
-export const Colour = styled.button`
-  padding: 20px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  background-color: ${(props) => props.colour};
-  border: 1px solid darkgray;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  :hover {
-    transform: scale(1.1);
+  span {
+    font-size: 1.5rem;
   }
 `;
 
-export const Size = styled.button`
-    padding: 16px;
-    background-color: transparent;
-    outline: none;
-    margin-right: 1rem;
-    cursor: pointer;
+export const FilterList = styled.div`
+  display: flex;
+`;
 
-    :hover {
-      color: white;
-      background-color: black;
+export const CircleOutline = styled.div`
+  padding: 5px;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  border: 2px solid transparent;
+  display: flex;
+
+  :hover {
+    border: 2px solid black;
+  }
+`;
+
+export const Colour = styled.input`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: ${(props) => props.value};
+  border: 1px solid darkgray;
+  cursor: pointer;
+  color: transparent;
+`;
+
+export const Size = styled.input`
+  padding: 16px;
+  background-color: transparent;
+  outline: none;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  :hover {
+    color: white;
+    background-color: black;
+  }
 `;

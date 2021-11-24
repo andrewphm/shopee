@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 // Styled-components
 import {
@@ -9,15 +9,34 @@ import {
   Filter,
   FilterContainer,
   Colour,
+  CircleOutline,
   Size,
+  FilterList,
 } from './ProductContainer.styles';
 
 const ProductContainer = () => {
+  const colourRef = useRef(null);
+  const sizeRef = useRef(null);
   const [size, setSize] = useState('');
   const [colour, setColour] = useState('');
-  const handleClick = (e) => {
-    let ele = e.target;
-    ele.style.transform = 'scale(1.1)';
+
+  const handleColourClick = (e) => {
+    if (colourRef.current)
+      colourRef.current.style.border = '2px solid transparent';
+    colourRef.current = e.target.parentElement;
+    colourRef.current.style.border = '2px solid black';
+    setColour(e.target.value);
+  };
+
+  const handleSizeClick = (e) => {
+    if (sizeRef.current) {
+      sizeRef.current.style.backgroundColor = 'transparent';
+      sizeRef.current.style.color = 'black';
+    }
+    sizeRef.current = e.target;
+    sizeRef.current.style.backgroundColor = 'black';
+    sizeRef.current.style.color = 'white';
+    setSize(e.target.value);
   };
 
   return (
@@ -36,20 +55,45 @@ const ProductContainer = () => {
         <span>$ 20</span>
         <FilterContainer>
           <Filter>
-            <h3>COLOUR: {colour && <span>{colour}</span>} </h3>
-            <div>
-              <Colour onClick={handleClick} colour="slategrey" />
-              <Colour colour="white" />
-              <Colour colour="black" />
-            </div>
+            <h3>
+              COLOUR: <span>{colour && colour}</span>
+            </h3>
+            <FilterList>
+              <CircleOutline>
+                <Colour
+                  onClick={handleColourClick}
+                  value="slategrey"
+                  type="button"
+                />
+              </CircleOutline>
+              <CircleOutline>
+                <Colour
+                  onClick={handleColourClick}
+                  value="white"
+                  type="button"
+                />
+              </CircleOutline>
+              <CircleOutline>
+                <Colour
+                  onClick={handleColourClick}
+                  value="black"
+                  type="button"
+                />
+              </CircleOutline>
+            </FilterList>
           </Filter>
           <Filter>
-            <h3>SIZE: </h3>
+            <h3>
+              SIZE: <span>{size && size}</span>{' '}
+            </h3>
             <div>
-              <Size>XS</Size>
-              <Size>S</Size>
-              <Size>M</Size>
-              <Size>L</Size>
+              <Size onClick={handleSizeClick} type="button" value="XS" />
+
+              <Size onClick={handleSizeClick} type="button" value="S" />
+
+              <Size onClick={handleSizeClick} type="button" value="M" />
+
+              <Size onClick={handleSizeClick} type="button" value="L" />
             </div>
           </Filter>
         </FilterContainer>
