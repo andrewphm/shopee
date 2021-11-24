@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 // Routing
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Newsletter />
       <Footer />

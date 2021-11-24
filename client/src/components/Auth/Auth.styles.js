@@ -2,15 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100vh;
-  padding: 80px 20px;
+  padding: 50px 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 1rem;
+  row-gap: 2rem;
 
   .desc {
-    width: 50%;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
   }
 `;
@@ -18,7 +19,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   margin-left: 2rem;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 600;
 `;
 
 export const FormContainer = styled.div`
