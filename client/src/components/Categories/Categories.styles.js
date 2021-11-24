@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
+//Media queries
+import { mobile, tablet } from '../../responsive';
+
 export const Container = styled.div`
   display: flex;
+
+  flex-wrap: wrap;
   padding: 20px;
   justify-content: space-between;
   width: 100vw;
   gap: 1rem;
+
+  ${mobile({
+    flexDirection: 'column',
+  })}
 `;
 
 export const ImageWrapper = styled.div`
@@ -37,11 +46,13 @@ export const Info = styled.div`
   h1 {
     color: white;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   button {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
+    color: black;
+    border: none;
+    background-color: white;
     font-weight: 600;
     font-size: 1.1.rem;
     padding: 10px;
@@ -54,6 +65,6 @@ export const Info = styled.div`
 `;
 
 export const Item = styled.div`
-  flex: 1;
   position: relative;
+  flex: 1;
 `;
