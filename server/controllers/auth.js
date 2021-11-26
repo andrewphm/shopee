@@ -4,6 +4,7 @@ const User = require('../models/User');
 // encrypt password
 const bcrypt = require('bcrypt');
 
+// REGISTER
 const register = async (req, res) => {
   try {
     const { firstName, lastName, username, email, password, isAdmin } =
@@ -27,6 +28,20 @@ const register = async (req, res) => {
   }
 };
 
-const signin = async (req, res) => {};
+//SIGN IN
+const signin = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    !user && res.status(401).json('No user');
+
+    const success = await bcrypt.compare(password, user.hashedPassword);
+    !success && res.status(401).json('Incorrect password');
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 module.exports = { register, signin };
