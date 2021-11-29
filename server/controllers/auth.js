@@ -4,6 +4,9 @@ const User = require('../models/User');
 // encrypt password
 const bcrypt = require('bcrypt');
 
+// jwt
+const jwt = require('jsonwebtoken');
+
 // REGISTER
 const register = async (req, res) => {
   try {
@@ -38,7 +41,17 @@ const signin = async (req, res) => {
     const success = await bcrypt.compare(password, user.hashedPassword);
     !success && res.status(401).json('Incorrect password');
 
-    res.status(200).json(user);
+    const accessToken = jwt.sign(
+      {
+        id: user._id,
+        isAdmin: user.isAdmin,
+      },
+      process.env.JWT_SEC,
+      { expiresIn: '3d' }
+    );
+    const { hashedPassword, ...others } = user._doc;
+
+    res.status(200).json({ ...others, accessToken });
   } catch (error) {
     res.status(500).json(error);
   }
