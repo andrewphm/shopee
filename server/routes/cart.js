@@ -7,8 +7,12 @@ const {
 } = require('../controllers/verifyToken');
 
 // Cart callback functions
-const { createCart } = require('../controllers/cart');
+const { createCart, updateCart } = require('../controllers/cart');
 
+// CREATE
 router.post('/', verifyToken, createCart);
+
+// UPDATE
+router.put('/:id', verifyTokenAndAuthorization, updateCart);
 
 module.exports = router;

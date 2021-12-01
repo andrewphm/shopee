@@ -5,7 +5,7 @@ const cors = require('cors');
 const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
-const carteRoute = require('./routes/cart');
+const cartRoute = require('./routes/cart');
 dotenv.config();
 
 // Connect MongoDB
@@ -26,7 +26,7 @@ app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 
 // CRUD routes for cart
-app.use('/api/carts/');
+app.use('/api/carts', cartRoute);
 
 // Login and Register routes
 app.use('/api/auth', authRoute);
