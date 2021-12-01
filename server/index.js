@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
+const productRoute = require('./routes/product');
 
 dotenv.config();
 
@@ -20,6 +21,9 @@ app.use(express.json());
 
 // CRUD routes for users
 app.use('/api/users', userRoute);
+
+// CRUD routes for products
+app.use('/api/products', productRoute);
 
 // Login and Register routes
 app.use('/api/auth', authRoute);

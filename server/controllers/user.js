@@ -56,7 +56,8 @@ const getAllUsers = async (req, res) => {
 };
 
 // GET User stats
-
+// Get current date and date from one year ago
+// User MongoDB aggregate method
 const getUserStats = async (req, res) => {
   const date = new Date();
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
