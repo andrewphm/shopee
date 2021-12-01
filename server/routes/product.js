@@ -10,6 +10,7 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  getProduct,
 } = require('../controllers/product');
 
 // CREATE product
@@ -20,5 +21,8 @@ router.put('/:id', verifyTokenAndAdmin, updateProduct);
 
 // Delete Product
 router.delete('/:id', verifyTokenAndAdmin, deleteProduct);
+
+// GET product
+router.get('/find/:id', getProduct);
 
 module.exports = router;
