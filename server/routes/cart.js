@@ -25,9 +25,10 @@ router.put('/:id', verifyTokenAndAuthorization, updateCart);
 // DELETE
 router.delete('/:id', verifyTokenAndAuthorization, deleteCart);
 
-// GET User Cart
-router.get('/find/:userId', verifyTokenAndAuthorization, getUserCart);
-
+// GET All carts
 router.get('/', verifyTokenAndAdmin, getAllCarts);
+
+// GET User Cart
+router.get('/:id', verifyTokenAndAuthorization, getUserCart);
 
 module.exports = router;

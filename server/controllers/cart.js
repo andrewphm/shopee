@@ -48,7 +48,7 @@ const deleteCart = async (req, res) => {
 // GET User Cart
 const getUserCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ userId: req.params.userId });
+    const cart = await Cart.findOne({ userId: req.params.id });
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json('Could not find cart');
