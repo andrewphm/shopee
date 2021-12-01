@@ -5,9 +5,8 @@ const {
   verifyTokenAndAuthorization,
 } = require('../controllers/verifyToken');
 
-router.put('/:id', verifyTokenAndAuthorization, (req, res) => {
-  if (req.body.password) {
-  }
-});
+const { updateUser } = require('../controllers/user');
+
+router.put('/:id', verifyTokenAndAuthorization, updateUser);
 
 module.exports = router;
