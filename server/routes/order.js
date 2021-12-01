@@ -12,8 +12,9 @@ const {
   createOrder,
   deleteOrder,
   updateOrder,
-  getUserOrder,
+  getUserOrders,
   getAllOrders,
+  getMonthlyIncome,
 } = require('../controllers/order');
 
 // CREATE
@@ -28,7 +29,10 @@ router.delete('/:id', verifyTokenAndAdmin, deleteOrder);
 // GET All Orders
 router.get('/', verifyTokenAndAdmin, getAllOrders);
 
-// GET User Order
-router.get('/:id', verifyTokenAndAuthorization, getUserOrder);
+// GET User Orders
+router.get('/:id', verifyTokenAndAuthorization, getUserOrders);
+
+// GET Monthly Income
+router.get('/income', verifyTokenAndAdmin, getMonthlyIncome);
 
 module.exports = router;
