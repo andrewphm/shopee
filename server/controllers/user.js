@@ -44,7 +44,6 @@ const getUser = async (req, res) => {
 };
 
 // GET All users
-
 const getAllUsers = async (req, res) => {
   const query = req.query.new;
   try {
