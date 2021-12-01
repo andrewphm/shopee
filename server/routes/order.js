@@ -29,10 +29,10 @@ router.delete('/:id', verifyTokenAndAdmin, deleteOrder);
 // GET All Orders
 router.get('/', verifyTokenAndAdmin, getAllOrders);
 
-// GET User Orders
-router.get('/:id', verifyTokenAndAuthorization, getUserOrders);
-
 // GET Monthly Income
 router.get('/income', verifyTokenAndAdmin, getMonthlyIncome);
+
+// GET User Orders
+router.get('/:id', verifyTokenAndAuthorization, getUserOrders);
 
 module.exports = router;

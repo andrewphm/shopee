@@ -82,7 +82,7 @@ const getMonthlyIncome = async (req, res) => {
     ]);
     res.status(200).json(income);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json('Could not aggregate income');
   }
 };
 
