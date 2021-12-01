@@ -11,7 +11,14 @@ const {
   deleteUser,
   getUser,
   getAllUsers,
+  getUserStats,
 } = require('../controllers/user');
+
+// GET all users
+router.get('/', verifyTokenAndAdmin, getAllUsers);
+
+// GET user stats
+router.get('/stats', verifyTokenAndAdmin, getUserStats);
 
 // UPDATE user
 router.put('/:id', verifyTokenAndAuthorization, updateUser);
@@ -22,6 +29,4 @@ router.delete('/:id', verifyTokenAndAuthorization, deleteUser);
 // GET user
 router.get('/:id', verifyTokenAndAdmin, getUser);
 
-// GET all users
-router.get('/', verifyTokenAndAdmin, getAllUsers);
 module.exports = router;
