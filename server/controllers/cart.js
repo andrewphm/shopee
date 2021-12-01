@@ -15,13 +15,17 @@ const createCart = async (req, res) => {
 // UPDATE Cart
 const updateCart = async (req, res) => {
   try {
+    const cart = await Cart.findOne({ userId: req.params.id });
+    const cartId = cart._id;
+
     const updatedCart = await Cart.findByIdAndUpdate(
-      req.params.id,
+      cartId,
       {
         $set: req.body,
       },
       { new: true }
     );
+
     res.status(200).json(updatedCart);
   } catch (error) {
     res.status(500).json('Could not update cart');
@@ -31,10 +35,13 @@ const updateCart = async (req, res) => {
 // DELETE Cart
 const deleteCart = async (req, res) => {
   try {
-    await Cart.findByIdAndDelete(req.params.id);
+    const cart = await Cart.findOne({ userId: req.params.id });
+    const cartId = cart._id;
+
+    await Cart.findByIdAndDelete(cartId);
     res.status(200).json('Cart has been deleted');
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json('Could not delete cart');
   }
 };
 

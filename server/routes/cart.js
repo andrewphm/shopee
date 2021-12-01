@@ -23,7 +23,7 @@ router.post('/', verifyToken, createCart);
 router.put('/:id', verifyTokenAndAuthorization, updateCart);
 
 // DELETE
-router.put('/:id', verifyTokenAndAuthorization, deleteCart);
+router.delete('/:id', verifyTokenAndAuthorization, deleteCart);
 
 // GET User Cart
 router.get('/find/:userId', verifyTokenAndAuthorization, getUserCart);
