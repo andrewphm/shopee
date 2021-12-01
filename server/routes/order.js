@@ -20,7 +20,15 @@ const {
 router.post('/', verifyToken, createOrder);
 
 // UPDATE
+router.put('/:id', verifyTokenAndAdmin, updateOrder);
 
 // DELETE
+router.delete('/:id', verifyTokenAndAdmin, deleteOrder);
+
+// GET All Orders
+router.get('/', verifyTokenAndAdmin, getAllOrders);
+
+// GET User Order
+router.get('/:id', verifyTokenAndAuthorization, getUserOrder);
 
 module.exports = router;
