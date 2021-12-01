@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const bcrypt = require('bcrypt');
 
-// UPDATE USER
+// UPDATE User
 const updateUser = async (req, res) => {
   if (req.body.hashedPassword) {
     req.body.hashedPassword = await bcrypt.hash(req.body.hashedPassword, 10);
@@ -22,25 +22,36 @@ const updateUser = async (req, res) => {
   }
 };
 
-// DELETE
+// DELETE User
 const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json('User has been deleted...');
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json('No user found to be deleted');
   }
 };
 
-// GET USER
+// GET User
 const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { hashedPassword, ...others } = user._doc;
     res.status(200).json(others);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json('No User found');
   }
 };
 
-module.exports = { updateUser, deleteUser, getUser };
+// GET All users
+
+const getAllUsers = async (req, res) => {
+  const query = req.query.new;
+  try {
+    const users = query
+      ? await User.find().sort({ _id: -1 }).limit(5)
+      : await User.find();
+    res.status(200).json(users);
+  } catch (error) {}
+};
+module.exports = { updateUser, deleteUser, getUser, getAllUsers };

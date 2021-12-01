@@ -6,7 +6,12 @@ const {
   verifyTokenAndAdmin,
 } = require('../controllers/verifyToken');
 
-const { updateUser, deleteUser, getUser } = require('../controllers/user');
+const {
+  updateUser,
+  deleteUser,
+  getUser,
+  getAllUsers,
+} = require('../controllers/user');
 
 // UPDATE user
 router.put('/:id', verifyTokenAndAuthorization, updateUser);
@@ -16,4 +21,7 @@ router.delete('/:id', verifyTokenAndAuthorization, deleteUser);
 
 // GET user
 router.get('/:id', verifyTokenAndAdmin, getUser);
+
+// GET all users
+router.get('/', verifyTokenAndAdmin, getAllUsers);
 module.exports = router;
