@@ -29,6 +29,39 @@ const updateCart = async (req, res) => {
 };
 
 // DELETE Cart
-const deleteCart = async (req, res) => {};
+const deleteCart = async (req, res) => {
+  try {
+    await Cart.findByIdAndDelete(req.params.id);
+    res.status(200).json('Cart has been deleted');
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
-module.exports = { createCart, updateCart };
+// GET User Cart
+const getUserCart = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ userId: req.params.userId });
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json('Could not find cart');
+  }
+};
+
+//GET All Carts
+const getAllCarts = async (req, res) => {
+  try {
+    const carts = await Cart.find();
+    res.status(200).json(carts);
+  } catch (error) {
+    res.status(500).json('Could not get carts');
+  }
+};
+
+module.exports = {
+  createCart,
+  updateCart,
+  deleteCart,
+  getUserCart,
+  getAllCarts,
+};
