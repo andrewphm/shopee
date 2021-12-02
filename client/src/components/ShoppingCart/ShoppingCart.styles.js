@@ -172,6 +172,7 @@ export const Colour = styled.div`
     width: 20px;
     border-radius: 50%;
     background-color: ${(props) => props.colour};
+    border: 1px solid black;
   }
 `;
 export const Size = styled.div`

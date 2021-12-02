@@ -98,8 +98,8 @@ const ProductContainer = () => {
                   COLOUR: <span>{colour && colour}</span>
                 </h3>
                 <FilterList>
-                  {product.color.map((color) => (
-                    <CircleOutline>
+                  {product.color.map((color, i) => (
+                    <CircleOutline key={i}>
                       <Colour
                         onClick={handleColourClick}
                         value={color}
