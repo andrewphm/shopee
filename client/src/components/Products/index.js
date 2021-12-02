@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 // Styled-components
 import { Container, Item, Circle, Image, Info, Icon } from './Products.styles';
 
-// Data
-import { popularProducts } from '../../data';
-
 // MUI
 import {
   FavoriteBorderOutlined,

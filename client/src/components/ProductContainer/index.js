@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
 
-import { useParams } from 'react-router-dom';
-
 //react router
 import { useLocation } from 'react-router-dom';
 
@@ -26,7 +24,6 @@ const ProductContainer = ({ product }) => {
   const sizeRef = useRef(null);
   const [size, setSize] = useState('');
   const [colour, setColour] = useState('');
-  const { productId } = useParams();
 
   const handleColourClick = (e) => {
     if (colourRef.current)
@@ -48,49 +45,33 @@ const ProductContainer = ({ product }) => {
   };
 
   const location = useLocation();
-  console.log(location);
+  const item = location.state;
+  console.log(item);
 
   return (
     <Container>
       <ImgContainer>
-        <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+        <Image src={item.img[0].img_main} />
       </ImgContainer>
       <InfoContainer>
-        <h1>Denim Jumpsuit</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-          facere! Assumenda facere eum ab nesciunt exercitationem. Eius
-          voluptatem nulla officiis. Assumenda facere eum ab nesciunt
-          exercitationem. Eius voluptatem nulla officiis.
-        </p>
-        <span>$ 20</span>
+        <h1>{item.title}</h1>
+        <p>{item.desc}</p>
+        <span>$ {item.price}</span>
         <FilterContainer>
           <Filter>
             <h3>
               COLOUR: <span>{colour && colour}</span>
             </h3>
             <FilterList>
-              <CircleOutline>
-                <Colour
-                  onClick={handleColourClick}
-                  value="slategrey"
-                  type="button"
-                />
-              </CircleOutline>
-              <CircleOutline>
-                <Colour
-                  onClick={handleColourClick}
-                  value="white"
-                  type="button"
-                />
-              </CircleOutline>
-              <CircleOutline>
-                <Colour
-                  onClick={handleColourClick}
-                  value="black"
-                  type="button"
-                />
-              </CircleOutline>
+              {item.color.map((color) => (
+                <CircleOutline>
+                  <Colour
+                    onClick={handleColourClick}
+                    value={color}
+                    type="button"
+                  />
+                </CircleOutline>
+              ))}
             </FilterList>
           </Filter>
           <Filter>
