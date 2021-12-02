@@ -1,7 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 //react router
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+// API
+import API from '../../API';
 
 // Styled-components
 import {
@@ -19,9 +22,10 @@ import {
   AddToCart,
 } from './ProductContainer.styles';
 
-const ProductContainer = ({ product }) => {
+const ProductContainer = () => {
   const colourRef = useRef(null);
   const sizeRef = useRef(null);
+  const [product, setProduct] = useState(null);
   const [size, setSize] = useState('');
   const [colour, setColour] = useState('');
 
@@ -44,57 +48,72 @@ const ProductContainer = ({ product }) => {
     setSize(e.target.value);
   };
 
-  const location = useLocation();
-  const item = location.state;
+  const { productId } = useParams();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await API.fetchProduct(productId);
+        setProduct(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProduct();
+  }, [productId]);
 
   return (
-    <Container>
-      <ImgContainer>
-        <Image src={item.img[0].img_main} />
-      </ImgContainer>
-      <InfoContainer>
-        <h1>{item.title}</h1>
-        <p>{item.desc}</p>
-        <span>$ {item.price}</span>
-        <FilterContainer>
-          <Filter>
-            <h3>
-              COLOUR: <span>{colour && colour}</span>
-            </h3>
-            <FilterList>
-              {item.color.map((color) => (
-                <CircleOutline>
-                  <Colour
-                    onClick={handleColourClick}
-                    value={color}
-                    type="button"
-                  />
-                </CircleOutline>
-              ))}
-            </FilterList>
-          </Filter>
-          <Filter>
-            <h3>
-              SIZE: <span>{size && size}</span>{' '}
-            </h3>
-            <FilterList>
-              <Size onClick={handleSizeClick} type="button" value="XS" />
+    <>
+      {product && (
+        <Container>
+          <ImgContainer>
+            <Image src={product.img[0].img_main} />
+          </ImgContainer>
+          <InfoContainer>
+            <h1>{product.title}</h1>
+            <p>{product.desc}</p>
+            <span>$ {product.price}</span>
+            <FilterContainer>
+              <Filter>
+                <h3>
+                  COLOUR: <span>{colour && colour}</span>
+                </h3>
+                <FilterList>
+                  {product.color.map((color) => (
+                    <CircleOutline>
+                      <Colour
+                        onClick={handleColourClick}
+                        value={color}
+                        type="button"
+                      />
+                    </CircleOutline>
+                  ))}
+                </FilterList>
+              </Filter>
+              <Filter>
+                <h3>
+                  SIZE: <span>{size && size}</span>{' '}
+                </h3>
+                <FilterList>
+                  <Size onClick={handleSizeClick} type="button" value="XS" />
 
-              <Size onClick={handleSizeClick} type="button" value="S" />
+                  <Size onClick={handleSizeClick} type="button" value="S" />
 
-              <Size onClick={handleSizeClick} type="button" value="M" />
+                  <Size onClick={handleSizeClick} type="button" value="M" />
 
-              <Size onClick={handleSizeClick} type="button" value="L" />
-            </FilterList>
-          </Filter>
-        </FilterContainer>
-        <AddToCartContainer>
-          <AddToCart>
-            {size && colour ? 'ADD TO CART' : 'Choose a size and colour'}
-          </AddToCart>
-        </AddToCartContainer>
-      </InfoContainer>
-    </Container>
+                  <Size onClick={handleSizeClick} type="button" value="L" />
+                </FilterList>
+              </Filter>
+            </FilterContainer>
+            <AddToCartContainer>
+              <AddToCart>
+                {size && colour ? 'ADD TO CART' : 'Choose a size and colour'}
+              </AddToCart>
+            </AddToCartContainer>
+          </InfoContainer>
+        </Container>
+      )}
+    </>
   );
 };
 

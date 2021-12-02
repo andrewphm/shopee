@@ -34,13 +34,15 @@ export const Image = styled.img`
 export const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem 0;
+  justify-content: center;
+  row-gap: 0.8rem;
 `;
 
 export const Filter = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 16px 0;
-  row-gap: 1rem;
+  row-gap: 0.3rem;
 
   span {
     font-size: 1.5rem;
