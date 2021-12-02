@@ -38,6 +38,6 @@ app.use('/api/orders', orderRoute);
 app.use('/api/auth', authRoute);
 
 // Stripe Payment
-app.use('/api/pay', stripeRoute);
+app.use('/api/checkout', stripeRoute);
 
 app.listen(process.env.PORT || 5000, () => console.log('Server started'));

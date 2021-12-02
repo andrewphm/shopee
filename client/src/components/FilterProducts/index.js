@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 
 // Styled-components
 import {
@@ -11,9 +12,11 @@ import {
 } from './FilterProducts.styles';
 
 const FilterProducts = () => {
+  const category = useLocation().pathname.split('/')[2];
+
   return (
     <Container>
-      <Title>Dresses</Title>
+      <Title>{category ? category : 'All styles'}</Title>
       <FilterContainer>
         <Filter>
           <span>Filter Products:</span>

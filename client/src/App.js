@@ -23,7 +23,8 @@ function App() {
       <Routes>
         <Route path="/shopi-fe" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
-        <Route path="/products/:productId" element={<Product />} />
+        <Route path="/products/:category" element={<ProductList />} />
+        <Route path="/products/:category/:productId" element={<Product />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />

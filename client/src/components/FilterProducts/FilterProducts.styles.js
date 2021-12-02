@@ -28,4 +28,5 @@ export const Option = styled.option``;
 
 export const Title = styled.h1`
   margin-right: 20px;
+  text-transform: capitalize;
 `;

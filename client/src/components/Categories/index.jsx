@@ -8,7 +8,7 @@ import { categories } from '../../data';
 import { Container, ImageWrapper, Info, Item } from './Categories.styles';
 
 const CategoryItem = ({ item }) => {
-  const { id, title, img } = item;
+  const { id, title, img, cat } = item;
   return (
     <Item key={id}>
       <ImageWrapper>
@@ -16,7 +16,7 @@ const CategoryItem = ({ item }) => {
       </ImageWrapper>
       <Info>
         <h1>{title}</h1>
-        <Link to="/products">
+        <Link to={`/products/${cat}`}>
           <button>SHOP NOW</button>
         </Link>
       </Info>

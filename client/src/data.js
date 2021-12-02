@@ -22,7 +22,7 @@ export const sliderItems = [
   },
   {
     id: 4,
-    img: 'https://i.imgur.com/DEAdr0b.pngg',
+    img: 'https://i.imgur.com/DEAdr0b.png',
     title: 'SPRING COLLECTION',
     desc: 'SUMMER STYLED ARE HERE. UPGRADE YOUR WARDROBE NOW.',
     bg: 'f5fafd',
@@ -34,16 +34,19 @@ export const categories = [
     id: 1,
     img: 'https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     title: 'SHIRTS',
+    cat: 'shirts',
   },
   {
     id: 2,
-    img: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    title: 'LOUNGEWEAR',
+    img: 'https://aritzia.scene7.com/is/image/Aritzia/large/f21_00_a06_95508_10870_on_a.jpg',
+    title: 'PANTS',
+    cat: 'pants',
   },
   {
     id: 3,
     img: 'https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-    title: 'LIGHT JACKETS',
+    title: 'OUTERWEAR',
+    cat: 'outerwear',
   },
 ];
 
@@ -75,5 +78,17 @@ export const popularProducts = [
   {
     id: 8,
     img: 'https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png',
+  },
+  {
+    id: 9,
+    img: 'https://imgur.com/dZPwxeh.png',
+  },
+  {
+    id: 10,
+    img: 'https://imgur.com/vSUBCW0.png',
+  },
+  {
+    id: 11,
+    img: 'https://imgur.com/feNveLN.png',
   },
 ];
