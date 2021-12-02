@@ -46,7 +46,6 @@ const ProductContainer = ({ product }) => {
 
   const location = useLocation();
   const item = location.state;
-  console.log(item);
 
   return (
     <Container>

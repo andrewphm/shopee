@@ -44,7 +44,15 @@ const Products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      const sessionState = sessionStorage.getItem('homeState');
+      if (sessionState) {
+        return setState(JSON.parse(sessionState));
+      }
+
       const res = await API.fetchProducts();
+
+      sessionStorage.setItem('homeState', JSON.stringify(res.data));
+
       setState(res.data);
     };
     fetchProducts();
