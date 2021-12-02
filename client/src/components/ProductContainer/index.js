@@ -1,5 +1,10 @@
 import React, { useState, useRef } from 'react';
 
+import { useParams } from 'react-router-dom';
+
+//react router
+import { useLocation } from 'react-router-dom';
+
 // Styled-components
 import {
   Container,
@@ -16,11 +21,12 @@ import {
   AddToCart,
 } from './ProductContainer.styles';
 
-const ProductContainer = () => {
+const ProductContainer = ({ product }) => {
   const colourRef = useRef(null);
   const sizeRef = useRef(null);
   const [size, setSize] = useState('');
   const [colour, setColour] = useState('');
+  const { productId } = useParams();
 
   const handleColourClick = (e) => {
     if (colourRef.current)
@@ -40,6 +46,9 @@ const ProductContainer = () => {
     sizeRef.current.style.color = 'white';
     setSize(e.target.value);
   };
+
+  const location = useLocation();
+  console.log(location);
 
   return (
     <Container>

@@ -24,6 +24,11 @@ export const Info = styled.div`
   transition: all 0.5s ease;
 `;
 
+export const Image = styled.img`
+  height: 75%;
+  z-index: 2;
+  transition: all 0.3s ease;
+`;
 export const Item = styled.div`
   position: relative;
   flex: 1;
@@ -37,6 +42,10 @@ export const Item = styled.div`
   :hover ${Info} {
     opacity: 1;
   }
+
+  :hover ${Image} {
+    transform: scale(1.1);
+  }
 `;
 
 export const Circle = styled.div`
@@ -45,11 +54,6 @@ export const Circle = styled.div`
   border-radius: 50%;
   background-color: white;
   position: absolute;
-`;
-
-export const Image = styled.img`
-  height: 75%;
-  z-index: 2;
 `;
 
 export const Icon = styled.div`
