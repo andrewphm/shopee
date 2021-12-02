@@ -4,6 +4,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProduct } from '../../redux/cartRedux';
 
+// Stripe Checkout
+import StripeCheckout from 'react-stripe-checkout';
+
 // Styled-components
 import {
   Wrapper,
@@ -31,7 +34,7 @@ const ShoppingCart = () => {
     dispatch(removeProduct({ ...item, index: i }));
   };
 
-  console.log(cart);
+  const KEY = process.env.REACT_APP_STRIPE;
 
   return (
     <Wrapper>
