@@ -36,7 +36,7 @@ export const FilterContainer = styled.div`
   flex-direction: column;
   padding: 2rem 0;
   justify-content: center;
-  row-gap: 0.8rem;
+  row-gap: 1rem;
 `;
 
 export const Filter = styled.div`
@@ -45,7 +45,7 @@ export const Filter = styled.div`
   row-gap: 0.3rem;
 
   span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -76,7 +76,7 @@ export const Colour = styled.input`
 `;
 
 export const Size = styled.input`
-  padding: 16px;
+  padding: 12px 16px;
   background-color: transparent;
   outline: none;
   margin-right: 1rem;

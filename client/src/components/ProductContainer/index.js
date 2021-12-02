@@ -26,8 +26,8 @@ const ProductContainer = () => {
   const colourRef = useRef(null);
   const sizeRef = useRef(null);
   const [product, setProduct] = useState(null);
-  const [size, setSize] = useState('');
-  const [colour, setColour] = useState('');
+  const [size, setSize] = useState(null);
+  const [colour, setColour] = useState(null);
 
   const handleColourClick = (e) => {
     if (colourRef.current)
@@ -46,6 +46,12 @@ const ProductContainer = () => {
     sizeRef.current.style.backgroundColor = 'black';
     sizeRef.current.style.color = 'white';
     setSize(e.target.value);
+  };
+
+  const handleClick = (e) => {
+    if (!colour || !size) return;
+
+    //Update cart
   };
 
   const { productId } = useParams();
@@ -106,7 +112,7 @@ const ProductContainer = () => {
               </Filter>
             </FilterContainer>
             <AddToCartContainer>
-              <AddToCart>
+              <AddToCart onClick={handleClick}>
                 {size && colour ? 'ADD TO CART' : 'Choose a size and colour'}
               </AddToCart>
             </AddToCartContainer>
