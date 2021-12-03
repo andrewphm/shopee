@@ -8,7 +8,12 @@ import Cart from './pages/Cart';
 import Success from './pages/Success';
 
 // Routing
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 // UI components
 import { Announcement, NavBar, Newsletter, Footer } from './components';
@@ -16,9 +21,15 @@ import { Announcement, NavBar, Newsletter, Footer } from './components';
 // Global styles
 import { GlobalStyle } from './GlobalStyle';
 
+// Redux
+import { useSelector } from 'react-redux';
+
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
+
   return (
-    <BrowserRouter>
+    <Router>
       <Announcement />
       <NavBar />
       <Routes>
@@ -26,6 +37,18 @@ function App() {
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/products/:category/:productId" element={<Product />} />
+        {user && (
+          <>
+            <Route
+              path="/login"
+              element={<Navigate replace to="/shopi-fe" />}
+            />
+            <Route
+              path="/register"
+              element={<Navigate replace to="/shopi-fe" />}
+            />
+          </>
+        )}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
@@ -34,7 +57,7 @@ function App() {
       <Newsletter />
       <Footer />
       <GlobalStyle />
-    </BrowserRouter>
+    </Router>
   );
 }
 

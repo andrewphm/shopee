@@ -35,23 +35,29 @@ const register = async (req, res) => {
 const signin = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    !user && res.status(401).json('No user');
 
-    const success = await bcrypt.compare(password, user.hashedPassword);
-    !success && res.status(401).json('Incorrect password');
+    try {
+      const user = await User.findOne({ username });
+      const success = await bcrypt.compare(password, user.hashedPassword);
 
-    const accessToken = jwt.sign(
-      {
-        id: user._id,
-        isAdmin: user.isAdmin,
-      },
-      process.env.JWT_SEC,
-      { expiresIn: '3d' }
-    );
-    const { hashedPassword, ...others } = user._doc;
+      if (success) {
+        const accessToken = jwt.sign(
+          {
+            id: user._id,
+            isAdmin: user.isAdmin,
+          },
+          process.env.JWT_SEC,
+          { expiresIn: '3d' }
+        );
+        const { hashedPassword, ...others } = user._doc;
 
-    res.status(200).json({ ...others, accessToken });
+        res.status(200).json({ ...others, accessToken });
+      } else {
+        res.status(401).json('Incorrect password');
+      }
+    } catch (error) {
+      res.status(401).json('No User');
+    }
   } catch (error) {
     res.status(500).json(error);
   }
