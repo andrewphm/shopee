@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,6 +8,8 @@ import { removeProduct } from '../../redux/cartRedux';
 
 // Stripe Checkout
 import StripeCheckout from 'react-stripe-checkout';
+// API
+import API, { userRequest } from '../../API';
 
 // Styled-components
 import {
@@ -27,6 +31,9 @@ import {
 } from './ShoppingCart.styles';
 
 const ShoppingCart = () => {
+  const [stripeToken, setStripeToken] = useState(null);
+  let navigate = useNavigate();
+
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -34,7 +41,24 @@ const ShoppingCart = () => {
     dispatch(removeProduct({ ...item, index: i }));
   };
 
-  const KEY = process.env.REACT_APP_STRIPE;
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post('/checkout/payment', {
+          tokenId: stripeToken.id,
+          amount: cart.total,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    stripeToken && makeRequest();
+  }, [stripeToken]);
 
   return (
     <Wrapper>
@@ -110,7 +134,17 @@ const ShoppingCart = () => {
               <strong>TOTAL</strong>
               <strong>$ {(cart.total * 1.1).toFixed(2)}</strong>
             </SummaryItem>
-            <button>CHECK OUT</button>
+            <StripeCheckout
+              name="Shopi"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${(cart.total * 1.1).toFixed(2)}`}
+              amount={cart.total * 100 * 1.1}
+              token={onToken}
+              stripeKey={process.env.REACT_APP_STRIPE}
+            >
+              <button>CHECK OUT</button>
+            </StripeCheckout>
           </PriceContainer>
         </CheckOutContainer>
       </Container>
