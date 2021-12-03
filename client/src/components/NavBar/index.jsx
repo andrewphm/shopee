@@ -4,7 +4,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOut } from '../../redux/userRedux';
 
 import {
   Wrapper,
@@ -22,6 +23,11 @@ import {
 const NavBar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(signOut());
+  };
 
   return (
     <Container>
@@ -41,13 +47,13 @@ const NavBar = () => {
         <Right>
           {user ? (
             <>
-              <MenuItem>
+              <MenuItem user="user">
                 <span>
                   <strong>{user.username}</strong>
                 </span>
               </MenuItem>
               <MenuItem>
-                <span>LOGOUT</span>
+                <span onClick={handleSignOut}>Sign Out</span>
               </MenuItem>
             </>
           ) : (

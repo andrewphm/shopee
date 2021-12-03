@@ -82,8 +82,6 @@ export const Logo = styled.h1`
 export const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
-
-  span {
-    text-transform: uppercase;
-  }
+  text-transform: ${(props) =>
+    props.user === 'user' ? 'uppercase' : 'capitalize'};
 `;
