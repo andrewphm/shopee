@@ -52,6 +52,10 @@ const ShoppingCart = () => {
           tokenId: stripeToken.id,
           amount: cart.total,
         });
+
+        console.log(res);
+
+        navigate('/success');
       } catch (error) {
         console.log(error);
       }
