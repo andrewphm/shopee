@@ -55,7 +55,7 @@ const ShoppingCart = () => {
 
         console.log(res);
 
-        navigate('/success');
+        navigate('/success', { state: res.data });
       } catch (error) {
         console.log(error);
       }

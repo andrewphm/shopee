@@ -74,5 +74,16 @@ export const FormItem = styled.div`
     :hover {
       opacity: 0.8;
     }
+
+    :disabled {
+      color: black;
+      cursor: not-allowed;
+    }
   }
+`;
+
+export const Error = styled.span`
+  color: red;
+  font-weight: 600;
+  text-align: center;
 `;
