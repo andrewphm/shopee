@@ -40,6 +40,7 @@ export const Right = styled.div`
   flex: 1;
   justify-content: flex-end;
   column-gap: 1rem;
+  align-items: center;
 `;
 export const Center = styled.div`
   flex: 1;
@@ -81,4 +82,8 @@ export const Logo = styled.h1`
 export const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
+
+  span {
+    text-transform: uppercase;
+  }
 `;

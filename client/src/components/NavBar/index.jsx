@@ -21,6 +21,7 @@ import {
 
 const NavBar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Container>
@@ -38,12 +39,27 @@ const NavBar = () => {
           </Logo>
         </Center>
         <Right>
-          <MenuItem>
-            <Link to="/register">Register</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/login">Sign In</Link>
-          </MenuItem>
+          {user ? (
+            <>
+              <MenuItem>
+                <span>
+                  <strong>{user.username}</strong>
+                </span>
+              </MenuItem>
+              <MenuItem>
+                <span>LOGOUT</span>
+              </MenuItem>
+            </>
+          ) : (
+            <>
+              <MenuItem>
+                <Link to="/register">Register</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/login">Sign In</Link>
+              </MenuItem>
+            </>
+          )}
           <MenuItem>
             <Link to="/cart">
               <Badge badgeContent={quantity} color="primary">

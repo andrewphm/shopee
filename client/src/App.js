@@ -33,6 +33,7 @@ function App() {
       <Announcement />
       <NavBar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/shopi-fe" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:category" element={<ProductList />} />
