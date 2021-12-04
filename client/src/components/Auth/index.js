@@ -12,9 +12,13 @@ import {
 
 // React Redux
 import { useDispatch, useSelector } from 'react-redux';
+import { loginFailure } from '../../redux/userRedux';
 
 // Redux api calls
 import { login } from '../../redux/apiCalls';
+
+// API
+import API from '../../API';
 
 const initialState = {
   firstName: '',
@@ -37,8 +41,23 @@ const Auth = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
+    const register = async (form) => {
+      try {
+        let res = await API.registerUser(form);
+        login(dispatch, { username: res.username, password: form.password });
+      } catch (error) {
+        dispatch(loginFailure());
+      }
+    };
+
+    // Login
     if (param !== 'register') {
       login(dispatch, { username: form.username, password: form.password });
+    }
+
+    // Register
+    if (param === 'register') {
+      register(form);
     }
   };
 

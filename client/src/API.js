@@ -36,6 +36,15 @@ const apiSettings = {
 
     return await response;
   },
+
+  registerUser: async (user) => {
+    try {
+      const res = await publicRequest.post('/auth/register', user);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export default apiSettings;
