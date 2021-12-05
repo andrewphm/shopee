@@ -20,6 +20,7 @@ export const Container = styled.div`
 export const ImageWrapper = styled.div`
   overflow: hidden;
   height: 500px;
+
   img {
     cursor: pointer;
     width: 100%;

@@ -32,7 +32,7 @@ const Auth = () => {
   const param = window.location.pathname.slice(1);
   const [form, setForm] = useState(initialState);
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,8 +44,19 @@ const Auth = () => {
     const register = async (form) => {
       try {
         let res = await API.registerUser(form);
-        login(dispatch, { username: res.username, password: form.password });
+
+        const user = await login(dispatch, {
+          username: res.username,
+          password: form.password,
+        });
+
+        await API.createCart(
+          { userId: res._id, products: [] },
+          user.accessToken
+        );
       } catch (error) {
+        console.log(error);
+
         dispatch(loginFailure());
       }
     };
@@ -53,6 +64,7 @@ const Auth = () => {
     // Login
     if (param !== 'register') {
       login(dispatch, { username: form.username, password: form.password });
+      // Load cart
     }
 
     // Register

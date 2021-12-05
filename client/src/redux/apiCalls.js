@@ -4,10 +4,13 @@ import { publicRequest } from '../API';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
+  let res;
   try {
-    const res = await publicRequest.post('/auth/signin', user);
+    res = await publicRequest.post('/auth/signin', user);
     dispatch(loginSuccess(res.data));
   } catch (error) {
     dispatch(loginFailure());
   }
+
+  return res.data;
 };

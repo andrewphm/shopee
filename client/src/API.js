@@ -11,7 +11,7 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  header: { token: `Bearer ${TOKEN}` },
+  headers: { token: `Bearer ${TOKEN}` },
 });
 
 const apiSettings = {
@@ -41,6 +41,16 @@ const apiSettings = {
     try {
       const res = await publicRequest.post('/auth/register', user);
       return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  createCart: async (body, token) => {
+    try {
+      await axios.post(`${BASE_URL}carts`, body, {
+        headers: { token: `Bearer ${token}` },
+      });
     } catch (error) {
       console.log(error);
     }

@@ -7,6 +7,13 @@ export const Container = styled.div`
 
 export const ImgContainer = styled.div`
   flex: 1;
+  height: 80vh;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const InfoContainer = styled.div`
@@ -23,12 +30,6 @@ export const InfoContainer = styled.div`
   p {
     margin: 20px 0px;
   }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
 `;
 
 export const FilterContainer = styled.div`
