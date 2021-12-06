@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import { signOut } from '../../redux/userRedux';
+import { setCart } from '../../redux/cartRedux';
 
 import {
   Wrapper,
@@ -26,6 +27,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
+    dispatch(setCart({ products: [], total: 0, amount: 0 }));
     dispatch(signOut());
   };
 

@@ -31,25 +31,38 @@ import API from './API';
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  // Change cart state
+  // Load users cart
   useEffect(() => {
-    console.log('user', user);
-    if (user === null) return console.log('nothing happens');
+    if (user === null) return;
 
     const setUserCart = async () => {
       const { products } = await API.getUserCart(user._id, user.accessToken);
       const quantity = products.length;
-      const total = products.reduce((prev, curr) => {
-        return Number(prev.price) + Number(curr.price);
+      const total = products.reduce((acc, curr) => {
+        return acc + Number(curr.price);
       }, 0);
-      console.log(products, quantity, total);
 
       dispatch(setCart({ products, quantity, total }));
     };
     setUserCart();
   }, [user]);
+
+  // Update users cart
+  useEffect(() => {
+    if (user === null) return;
+
+    // Update Users Cart
+    const updateCart = async () => {
+      await API.updateUserCart(user._id, user.accessToken, {
+        userId: user._id,
+        products: cart.products,
+      });
+    };
+    updateCart();
+  }, [cart, user]);
 
   return (
     <Router>

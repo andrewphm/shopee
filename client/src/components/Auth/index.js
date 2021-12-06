@@ -168,7 +168,7 @@ const Auth = () => {
               {param === 'register' ? 'Create an Account' : 'Sign In'}
             </button>
           </FormItem>
-          {error && <Error>Something went wrong, please try again.</Error>}
+          {error && <Error>Wrong username or password.</Error>}
         </Form>
       </FormContainer>
       <p>

@@ -61,8 +61,17 @@ const apiSettings = {
       let res = await axios.get(`${BASE_URL}carts/${userId}`, {
         headers: { token: `Bearer ${token}` },
       });
-
       return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  updateUserCart: async (userId, token, body) => {
+    try {
+      await axios.put(`${BASE_URL}carts/${userId}`, body, {
+        headers: { token: `Bearer ${token}` },
+      });
     } catch (error) {
       console.log(error);
     }
