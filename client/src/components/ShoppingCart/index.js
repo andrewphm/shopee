@@ -159,17 +159,25 @@ const ShoppingCart = () => {
                 <strong>TOTAL</strong>
                 <strong>$ {(cart.total * 1.1).toFixed(2)}</strong>
               </SummaryItem>
-              <StripeCheckout
-                name="Shopi"
-                billingAddress
-                shippingAddress
-                description={`Your total is $${(cart.total * 1.1).toFixed(2)}`}
-                amount={cart.total * 100 * 1.1}
-                token={onToken}
-                stripeKey={process.env.REACT_APP_STRIPE}
-              >
-                <button>CHECK OUT</button>
-              </StripeCheckout>
+              {user ? (
+                <StripeCheckout
+                  name="Shopi"
+                  billingAddress
+                  shippingAddress
+                  description={`Your total is $${(cart.total * 1.1).toFixed(
+                    2
+                  )}`}
+                  amount={cart.total * 100 * 1.1}
+                  token={onToken}
+                  stripeKey={process.env.REACT_APP_STRIPE}
+                >
+                  <button>Check Out</button>
+                </StripeCheckout>
+              ) : (
+                <Link to="/login">
+                  <button>Sign in to check out</button>
+                </Link>
+              )}
             </PriceContainer>
           </CheckOutContainer>
         )}

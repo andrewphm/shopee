@@ -28,25 +28,12 @@ export const Wrapper = styled.div`
 
 export const ImgContainer = styled.div`
   height: 100%;
-  flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   max-height: 700px;
   position: relative;
   z-index: 1;
-`;
-
-export const Circle = styled.div`
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  background-color: lightsalmon;
-  margin: 0 auto;
-  position: absolute;
-  z-index: -1;
-  top: 40px;
-  left: 100px;
 `;
 
 export const Image = styled.img`
@@ -55,6 +42,7 @@ export const Image = styled.img`
 
 export const InfoContainer = styled.div`
   padding: 50px;
+  max-width: 600px;
 
   h1 {
     font-size: clamp(2rem, vw6, 60px);

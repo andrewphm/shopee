@@ -10,6 +10,9 @@ import {
   Error,
 } from './Auth.styles';
 
+// React Router
+import { Link } from 'react-router-dom';
+
 // React Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure } from '../../redux/userRedux';
@@ -171,11 +174,21 @@ const Auth = () => {
           {error && <Error>Wrong username or password.</Error>}
         </Form>
       </FormContainer>
-      <p>
-        {param === 'register'
-          ? 'Already have an account? Sign in'
-          : 'Need an account? Register here'}
-      </p>
+      {param === 'register' ? (
+        <p>
+          Already have an account?
+          <Link to="/login">
+            <strong> Sign in.</strong>
+          </Link>
+        </p>
+      ) : (
+        <p>
+          Don't have an account?
+          <Link to="/register">
+            <strong> Register.</strong>
+          </Link>
+        </p>
+      )}
     </Container>
   );
 };
