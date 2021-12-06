@@ -22,7 +22,8 @@ import { Announcement, NavBar, Newsletter, Footer } from './components';
 import { GlobalStyle } from './GlobalStyle';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCart } from './redux/cartRedux';
 import { useEffect } from 'react';
 
 // API
@@ -30,16 +31,22 @@ import API from './API';
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
 
   // Change cart state
-
   useEffect(() => {
-    console.log(user);
+    console.log('user', user);
     if (user === null) return console.log('nothing happens');
 
     const setUserCart = async () => {
-      let res = await API.getUserCart(user._id, user.accessToken);
-      console.log(res);
+      const { products } = await API.getUserCart(user._id, user.accessToken);
+      const quantity = products.length;
+      const total = products.reduce((prev, curr) => {
+        return Number(prev.price) + Number(curr.price);
+      }, 0);
+      console.log(products, quantity, total);
+
+      dispatch(setCart({ products, quantity, total }));
     };
     setUserCart();
   }, [user]);
