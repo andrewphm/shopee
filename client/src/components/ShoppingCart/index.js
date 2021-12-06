@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
-
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProduct, setCart } from '../../redux/cartRedux';
 
 // Stripe Checkout
 import StripeCheckout from 'react-stripe-checkout';
+
 // API
 import API, { userRequest } from '../../API';
 
 //Router
 import { Link } from 'react-router-dom';
+
+// UI components
+import { Success } from '../index';
 
 // Styled-components
 import {
@@ -35,10 +37,10 @@ import {
 
 const ShoppingCart = () => {
   const [stripeToken, setStripeToken] = useState(null);
-  let navigate = useNavigate();
   const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [order, setOrder] = useState(null);
 
   const handleClick = (i, item) => {
     dispatch(removeProduct({ ...item, index: i }));
@@ -55,10 +57,9 @@ const ShoppingCart = () => {
         let amount = Number((cart.total * 1.1).toFixed(2));
         const { data } = await userRequest.post('/checkout/payment', {
           tokenId: stripeToken.id,
-          amount,
+          amount: amount * 100,
         });
 
-        console.log(user);
         // Create Order
         let order = await API.createOrder(user._id, user.accessToken, {
           userId: user._id,
@@ -70,13 +71,13 @@ const ShoppingCart = () => {
         // Clear cart
         dispatch(setCart({ products: [], quantity: 0, total: 0 }));
 
-        navigate('/success', { state: order });
+        setOrder(order.data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    stripeToken && makeRequest();
+    stripeToken && cart.total > 10 && makeRequest();
   }, [stripeToken]);
 
   return (
@@ -132,42 +133,46 @@ const ShoppingCart = () => {
             </Product>
           ))}
         </ItemContainer>
-        <CheckOutContainer>
-          <h1>ORDER SUMMARY</h1>
-          <PriceContainer>
-            <SummaryItem>
-              <strong>SUBTOTAL</strong>
-              <strong>$ {cart.total}</strong>
-            </SummaryItem>
-            <SummaryItem>
-              <p>ESTIMATED SHIPPING</p>
-              <p>$ 5.0</p>
-            </SummaryItem>
-            <SummaryItem>
-              <p>SHIPPING DISCOUNT</p>
-              <p>-$ 5.0</p>
-            </SummaryItem>
-            <SummaryItem>
-              <p>TAX</p>
-              <p>$ {cart.total * 0.1}</p>
-            </SummaryItem>
-            <SummaryItem>
-              <strong>TOTAL</strong>
-              <strong>$ {(cart.total * 1.1).toFixed(2)}</strong>
-            </SummaryItem>
-            <StripeCheckout
-              name="Shopi"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${(cart.total * 1.1).toFixed(2)}`}
-              amount={cart.total * 100 * 1.1}
-              token={onToken}
-              stripeKey={process.env.REACT_APP_STRIPE}
-            >
-              <button>CHECK OUT</button>
-            </StripeCheckout>
-          </PriceContainer>
-        </CheckOutContainer>
+        {order ? (
+          <Success order={order} />
+        ) : (
+          <CheckOutContainer>
+            <h1>ORDER SUMMARY</h1>
+            <PriceContainer>
+              <SummaryItem>
+                <strong>SUBTOTAL</strong>
+                <strong>$ {cart.total}</strong>
+              </SummaryItem>
+              <SummaryItem>
+                <p>ESTIMATED SHIPPING</p>
+                <p>$ 5.0</p>
+              </SummaryItem>
+              <SummaryItem>
+                <p>SHIPPING DISCOUNT</p>
+                <p>-$ 5.0</p>
+              </SummaryItem>
+              <SummaryItem>
+                <p>TAX</p>
+                <p>$ {cart.total * 0.1}</p>
+              </SummaryItem>
+              <SummaryItem>
+                <strong>TOTAL</strong>
+                <strong>$ {(cart.total * 1.1).toFixed(2)}</strong>
+              </SummaryItem>
+              <StripeCheckout
+                name="Shopi"
+                billingAddress
+                shippingAddress
+                description={`Your total is $${(cart.total * 1.1).toFixed(2)}`}
+                amount={cart.total * 100 * 1.1}
+                token={onToken}
+                stripeKey={process.env.REACT_APP_STRIPE}
+              >
+                <button>CHECK OUT</button>
+              </StripeCheckout>
+            </PriceContainer>
+          </CheckOutContainer>
+        )}
       </Container>
     </Wrapper>
   );
