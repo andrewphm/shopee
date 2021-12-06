@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Item, Circle, Image, Info, Icon } from './Products.styles';
 
 // MUI
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from '@material-ui/icons';
+import { FavoriteBorderOutlined, SearchOutlined } from '@material-ui/icons';
 
 // API
 import API from '../../API';

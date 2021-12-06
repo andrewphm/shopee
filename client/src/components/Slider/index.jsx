@@ -14,7 +14,6 @@ import {
   Slide,
   InfoContainer,
   Image,
-  Circle,
 } from './Slider.styles';
 
 const Slider = () => {
@@ -40,7 +39,6 @@ const Slider = () => {
           return (
             <Slide id={id} key={id} bg={bg}>
               <ImgContainer>
-                <Circle />
                 <Image src={img} />
               </ImgContainer>
               <InfoContainer>

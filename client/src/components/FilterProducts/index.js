@@ -5,7 +5,6 @@ import { useLocation } from 'react-router';
 import {
   Container,
   Filter,
-  Title,
   FilterContainer,
   Select,
   Option,

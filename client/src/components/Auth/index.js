@@ -32,7 +32,7 @@ const Auth = () => {
   const param = window.location.pathname.slice(1);
   const [form, setForm] = useState(initialState);
   const dispatch = useDispatch();
-  const { isFetching, error, currentUser } = useSelector((state) => state.user);
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

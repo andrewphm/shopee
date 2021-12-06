@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // media queries
-import { mobile, tablet } from '../../responsive';
+import { tablet } from '../../responsive';
 
 export const Container = styled.div`
   display: flex;

@@ -14,7 +14,6 @@ import {
   Left,
   Center,
   Right,
-  Language,
   SearchContainer,
   Input,
   Logo,
