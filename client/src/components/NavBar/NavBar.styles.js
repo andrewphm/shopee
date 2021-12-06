@@ -9,7 +9,7 @@ export const Container = styled.div`
   ${mobile({
     height: '100%',
     marginBottom: '2rem',
-  })}
+  })};
 `;
 
 export const Wrapper = styled.div`

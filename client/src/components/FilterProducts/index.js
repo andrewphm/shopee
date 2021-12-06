@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 
 // Styled-components
@@ -11,35 +11,26 @@ import {
   Option,
 } from './FilterProducts.styles';
 
+// UI components
+import { BreadCrumb } from '../index';
+
 const FilterProducts = () => {
   const category = useLocation().pathname.split('/')[2];
+  const [filter, setFilter] = useState('');
 
   return (
     <Container>
-      <Title>{category ? category : 'All styles'}</Title>
+      <BreadCrumb category={category} filter={filter} />
       <FilterContainer>
         <Filter>
           <span>Filter Products:</span>
-          <Select>
-            <Option disabled selected>
-              Colour
+          <Select onChange={(event) => setFilter(event.target.value)}>
+            <Option selected value="shop all">
+              Shop All
             </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
-            <Option>XS</Option>
-            <Option>S</Option>
-            <Option>M</Option>
-            <Option>L</Option>
-            <Option>XL</Option>
+            <Option value="shirts">Shirts</Option>
+            <Option value="pants">Pants</Option>
+            <Option value="outerwear">Outerwear</Option>
           </Select>
         </Filter>
         <Filter>

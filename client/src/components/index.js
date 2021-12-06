@@ -9,3 +9,4 @@ export { default as FilterProducts } from './FilterProducts';
 export { default as ProductContainer } from './ProductContainer';
 export { default as Auth } from './Auth';
 export { default as ShoppingCart } from './ShoppingCart';
+export { default as BreadCrumb } from './BreadCrumb';
