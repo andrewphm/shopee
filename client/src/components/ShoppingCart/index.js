@@ -36,7 +36,7 @@ import {
 const ShoppingCart = () => {
   const [stripeToken, setStripeToken] = useState(null);
   let navigate = useNavigate();
-
+  const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -45,22 +45,32 @@ const ShoppingCart = () => {
   };
 
   const onToken = (token) => {
-    // Clear cart
-    dispatch(setCart({ products: [], quantity: 0, total: 0 }));
     setStripeToken(token);
   };
 
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post('/checkout/payment', {
+        // Confirm stripe payment with backend
+        let amount = Number((cart.total * 1.1).toFixed(2));
+        const { data } = await userRequest.post('/checkout/payment', {
           tokenId: stripeToken.id,
-          amount: cart.total,
+          amount,
         });
 
-        console.log(res);
+        console.log(user);
+        // Create Order
+        let order = await API.createOrder(user._id, user.accessToken, {
+          userId: user._id,
+          products: cart.products,
+          amount,
+          address: data.billing_details.address,
+        });
 
-        navigate('/success', { state: res.data });
+        // Clear cart
+        dispatch(setCart({ products: [], quantity: 0, total: 0 }));
+
+        navigate('/success', { state: order });
       } catch (error) {
         console.log(error);
       }

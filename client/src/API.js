@@ -76,6 +76,18 @@ const apiSettings = {
       console.log(error);
     }
   },
+
+  createOrder: async (userId, token, body) => {
+    try {
+      let order = await axios.post(`${BASE_URL}orders`, body, {
+        headers: { token: `Bearer: ${token}` },
+      });
+
+      return order;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export default apiSettings;

@@ -36,8 +36,6 @@ function App() {
 
   // Load users cart
   useEffect(() => {
-    if (user === null) return;
-
     const setUserCart = async () => {
       const { products } = await API.getUserCart(user._id, user.accessToken);
       const quantity = products.length;
@@ -47,13 +45,10 @@ function App() {
 
       dispatch(setCart({ products, quantity, total }));
     };
-    setUserCart();
+    user && setUserCart();
   }, [user]);
 
-  // Update users cart
   useEffect(() => {
-    if (user === null) return;
-
     // Update Users Cart
     const updateCart = async () => {
       await API.updateUserCart(user._id, user.accessToken, {
@@ -61,7 +56,7 @@ function App() {
         products: cart.products,
       });
     };
-    updateCart();
+    user && updateCart();
   }, [cart, user]);
 
   return (
