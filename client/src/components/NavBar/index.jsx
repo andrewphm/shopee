@@ -27,7 +27,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    dispatch(setCart({ products: [], total: 0, amount: 0 }));
+    dispatch(setCart({ products: [], total: 0, quantity: 0 }));
     dispatch(signOut());
   };
 

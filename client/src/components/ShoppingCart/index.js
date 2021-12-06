@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProduct } from '../../redux/cartRedux';
+import { removeProduct, setCart } from '../../redux/cartRedux';
 
 // Stripe Checkout
 import StripeCheckout from 'react-stripe-checkout';
@@ -45,6 +45,8 @@ const ShoppingCart = () => {
   };
 
   const onToken = (token) => {
+    // Clear cart
+    dispatch(setCart({ products: [], quantity: 0, total: 0 }));
     setStripeToken(token);
   };
 
