@@ -46,6 +46,11 @@ const NavBar = () => {
               <h3>Women</h3>
             </Link>
           </MenuItem>
+          <MenuItem>
+            <Link to="/products/">
+              <h3>All</h3>
+            </Link>
+          </MenuItem>
         </Left>
         <Center></Center>
         <Right>

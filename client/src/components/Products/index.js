@@ -21,11 +21,6 @@ const ProductItem = ({ item }) => {
       <Circle />
       <Image src={img[1].img_small} alt="product" />
       <Info>
-        <Link to="/cart">
-          <Icon>
-            <ShoppingCartOutlined />
-          </Icon>
-        </Link>
         <Link to={`/products/allstyles/${_id}`} state={item}>
           <Icon>
             <SearchOutlined />

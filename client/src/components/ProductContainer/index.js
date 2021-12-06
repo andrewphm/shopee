@@ -5,7 +5,7 @@ import { addProduct } from '../../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 
 // React Router
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // API
 import API from '../../API';
@@ -34,6 +34,7 @@ const ProductContainer = () => {
   const [colour, setColour] = useState(null);
   const dispatch = useDispatch();
   const quantity = 1;
+  const navigate = useNavigate();
 
   const handleColourClick = (e) => {
     if (colourRef.current)
@@ -65,6 +66,8 @@ const ProductContainer = () => {
         quantity,
       })
     );
+
+    navigate('/cart');
   };
 
   const { productId } = useParams();

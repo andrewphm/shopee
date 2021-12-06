@@ -23,10 +23,26 @@ import { GlobalStyle } from './GlobalStyle';
 
 // Redux
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+// API
+import API from './API';
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
+
+  // Change cart state
+
+  useEffect(() => {
+    console.log(user);
+    if (user === null) return console.log('nothing happens');
+
+    const setUserCart = async () => {
+      let res = await API.getUserCart(user._id, user.accessToken);
+      console.log(res);
+    };
+    setUserCart();
+  }, [user]);
 
   return (
     <Router>

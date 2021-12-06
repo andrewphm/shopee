@@ -11,6 +11,9 @@ import StripeCheckout from 'react-stripe-checkout';
 // API
 import API, { userRequest } from '../../API';
 
+//Router
+import { Link } from 'react-router-dom';
+
 // Styled-components
 import {
   Wrapper,
@@ -68,10 +71,12 @@ const ShoppingCart = () => {
     <Wrapper>
       <h1>SHOPPING CART</h1>
       <CartNav>
-        <button>CONTINUE SHOPPING</button>
+        <Link to="/products">
+          <button>CONTINUE SHOPPING</button>
+        </Link>
         <Links className="links">
           <a href="#cart" alt="Shopping bag">
-            Shopping Bag (0)
+            Shopping Bag (<strong>{cart.quantity}</strong>)
           </a>
           <a href="#wishlist" alt="Wishlist">
             Your Wishlist (0)
