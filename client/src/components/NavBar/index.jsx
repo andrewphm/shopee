@@ -33,18 +33,26 @@ const NavBar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          <Logo>
+            <Link to="/shopi-fe">SHOPI.</Link>
+          </Logo>
+          <MenuItem>
+            <Link to="/products/men">
+              <h3>Men</h3>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/products/women">
+              <h3>Women</h3>
+            </Link>
+          </MenuItem>
+        </Left>
+        <Center></Center>
+        <Right>
           <SearchContainer>
             <Input placeholder="Search"></Input>
             <Search />
           </SearchContainer>
-        </Left>
-        <Center>
-          <Logo>
-            <Link to="/shopi-fe">SHOPI.</Link>
-          </Logo>
-        </Center>
-        <Right>
           {user ? (
             <>
               <MenuItem user="user">

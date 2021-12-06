@@ -29,6 +29,7 @@ export const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  column-gap: 2.5rem;
 
   ${mobile({
     order: '2',
@@ -77,6 +78,7 @@ export const Input = styled.input`
 
 export const Logo = styled.h1`
   font-weight: bold;
+  margin-right: 1rem;
 `;
 
 export const MenuItem = styled.div`
@@ -84,4 +86,12 @@ export const MenuItem = styled.div`
   cursor: pointer;
   text-transform: ${(props) =>
     props.user === 'user' ? 'uppercase' : 'capitalize'};
+
+  h3 {
+    font-weight: 500;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
