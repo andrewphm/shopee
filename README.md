@@ -1,4 +1,4 @@
-# Shopee eCommerce App
+# Shopi eCommerce App
 
 [http://andrewpham.ca/shopi-fe](http://andrewpham.ca/shopi-fe)
 
