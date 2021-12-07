@@ -11,6 +11,8 @@ const orderRoute = require('./routes/order');
 const stripeRoute = require('./routes/stripe');
 
 // Connect MongoDB
+
+console.log(process.env.MONGO_URI);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log('DB connected!'))
@@ -20,6 +22,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 // CRUD routes for users
 app.use('/api/users', userRoute);

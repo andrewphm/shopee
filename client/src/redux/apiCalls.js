@@ -1,12 +1,13 @@
 import { loginStart, loginFailure, loginSuccess } from './userRedux';
 
-import { publicRequest } from '../API';
+import API from '../API';
+import { useReducer } from 'react';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
 
   try {
-    const res = await publicRequest.post('/auth/signin', user);
+    const res = await API.signInUser(user);
     dispatch(loginSuccess(res.data));
   } catch (error) {
     dispatch(loginFailure());
