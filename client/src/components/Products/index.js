@@ -38,7 +38,7 @@ const Products = ({ filter, category, sort }) => {
 
   let skeletonArr = [];
   for (let i = 0; i < 8; i++) {
-    skeletonArr.push(<Skeleton />);
+    skeletonArr.push(<Skeleton key={i} />);
   }
 
   useEffect(() => {
@@ -93,7 +93,6 @@ const Products = ({ filter, category, sort }) => {
 
   return (
     <Container>
-      {console.log(category)}
       {!state && skeletonArr}
       {state?.map((item) => (
         <ProductItem item={item} key={item._id} />
