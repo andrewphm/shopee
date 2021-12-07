@@ -46,7 +46,7 @@ const Products = ({ filter, category, sort }) => {
       try {
         const { data } = await API.fetchProducts();
         let products = data;
-        if (category) {
+        if (category && category !== 'all') {
           products = data.filter((product) => {
             return product.categories.includes(category);
           });
@@ -93,7 +93,7 @@ const Products = ({ filter, category, sort }) => {
 
   return (
     <Container>
-      {console.log(state)}
+      {console.log(category)}
       {!state && skeletonArr}
       {state?.map((item) => (
         <ProductItem item={item} key={item._id} />
