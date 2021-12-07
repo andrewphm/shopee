@@ -9,6 +9,9 @@ import { FavoriteBorderOutlined, SearchOutlined } from '@material-ui/icons';
 // API
 import API from '../../API';
 
+// UI Components
+import { Skeleton } from '../index';
+
 const ProductItem = ({ item }) => {
   const { img, _id } = item;
 
@@ -31,7 +34,12 @@ const ProductItem = ({ item }) => {
 };
 
 const Products = ({ filter, category, sort }) => {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState(null);
+
+  let skeletonArr = [];
+  for (let i = 0; i < 8; i++) {
+    skeletonArr.push(<Skeleton />);
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -85,7 +93,9 @@ const Products = ({ filter, category, sort }) => {
 
   return (
     <Container>
-      {state.map((item) => (
+      {console.log(state)}
+      {!state && skeletonArr}
+      {state?.map((item) => (
         <ProductItem item={item} key={item._id} />
       ))}
     </Container>

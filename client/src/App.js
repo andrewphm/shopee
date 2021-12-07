@@ -36,13 +36,17 @@ function App() {
   // Load users cart
   useEffect(() => {
     const setUserCart = async () => {
-      const { products } = await API.getUserCart(user._id, user.accessToken);
-      const quantity = products.length;
-      const total = products.reduce((acc, curr) => {
-        return acc + Number(curr.price);
-      }, 0);
+      try {
+        const { products } = await API.getUserCart(user._id, user.accessToken);
+        const quantity = products.length;
+        const total = products.reduce((acc, curr) => {
+          return acc + Number(curr.price);
+        }, 0);
 
-      dispatch(setCart({ products, quantity, total }));
+        dispatch(setCart({ products, quantity, total }));
+      } catch (error) {
+        console.log(error);
+      }
     };
     user && setUserCart();
   }, [user]);
