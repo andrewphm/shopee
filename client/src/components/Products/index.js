@@ -30,8 +30,42 @@ const ProductItem = ({ item }) => {
   );
 };
 
-const Products = () => {
+const Products = ({ filter, category, sort }) => {
   const [state, setState] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await API.fetchProducts();
+        let products = data;
+        if (category) {
+          products = data.filter((product) => {
+            return product.categories.includes(category);
+          });
+        }
+        if (filter && filter !== 'all') {
+          products = products.filter((product) => {
+            return product.categories.includes(filter);
+          });
+        }
+        if (sort === '1') {
+          products.sort((a, b) => {
+            return a.price - b.price;
+          });
+        }
+        if (sort === '-1') {
+          products.sort((a, b) => {
+            return b.price - a.price;
+          });
+        }
+        setState(products);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    (filter || category || sort) && fetchProducts();
+  }, [filter, category, sort]);
 
   useEffect(() => {
     const fetchProducts = async () => {

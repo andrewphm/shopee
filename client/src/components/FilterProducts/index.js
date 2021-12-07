@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router';
 
 // Styled-components
 import {
@@ -13,10 +12,7 @@ import {
 // UI components
 import { BreadCrumb } from '../index';
 
-const FilterProducts = () => {
-  const category = useLocation().pathname.split('/')[2];
-  const [filter, setFilter] = useState('');
-
+const FilterProducts = ({ category, setFilter, filter, sort, setSort }) => {
   return (
     <Container>
       <BreadCrumb category={category} filter={filter} />
@@ -24,9 +20,7 @@ const FilterProducts = () => {
         <Filter>
           <span>Filter Products:</span>
           <Select onChange={(event) => setFilter(event.target.value)}>
-            <Option selected value="shop all">
-              Shop All
-            </Option>
+            <Option value="all">Shop All</Option>
             <Option value="shirts">Shirts</Option>
             <Option value="pants">Pants</Option>
             <Option value="outerwear">Outerwear</Option>
@@ -34,10 +28,11 @@ const FilterProducts = () => {
         </Filter>
         <Filter>
           <span>Sort Products:</span>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price low to high</Option>
-            <Option>Price high to low</Option>
+          <Select onChange={(event) => setSort(event.target.value)}>
+            <Option defaultValue value="1">
+              Price low to high
+            </Option>
+            <Option value="-1">Price high to low</Option>
           </Select>
         </Filter>
       </FilterContainer>

@@ -48,7 +48,7 @@ const NavBar = () => {
             </Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/products/">
+            <Link to="/products">
               <h3>All</h3>
             </Link>
           </MenuItem>
