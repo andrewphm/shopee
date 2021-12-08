@@ -16,7 +16,13 @@ import {
 } from 'react-router-dom';
 
 // UI components
-import { Announcement, NavBar, Newsletter, Footer } from './components';
+import {
+  Announcement,
+  NavBar,
+  Newsletter,
+  Footer,
+  ScrollToTop,
+} from './components';
 
 // Global styles
 import { GlobalStyle } from './GlobalStyle';
@@ -65,6 +71,8 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
+
       <Announcement />
       <NavBar />
       <Routes>

@@ -12,3 +12,4 @@ export { default as ShoppingCart } from './ShoppingCart';
 export { default as BreadCrumb } from './BreadCrumb';
 export { default as Success } from './Success';
 export { default as Skeleton } from './Skeleton';
+export { default as ScrollToTop } from './ScrollToTop';

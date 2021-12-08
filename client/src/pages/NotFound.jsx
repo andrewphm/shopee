@@ -31,7 +31,7 @@ const NotFound = () => {
   return (
     <Container>
       <ImageWrapper>
-        <img src={img} alt="" />
+        <img src={img} alt="Page not found." />
       </ImageWrapper>
       <p>Sorry, this webpage is not available, please come back later!</p>
     </Container>
