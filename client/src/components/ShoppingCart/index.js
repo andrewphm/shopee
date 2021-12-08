@@ -99,7 +99,7 @@ const ShoppingCart = () => {
       </CartNav>
       <Container>
         <ItemContainer>
-          {cart.products.map((item, i) => (
+          {cart?.products.map((item, i) => (
             <Product key={i}>
               <ImageWrapper>
                 <Image src={item.img[1].img_small} />

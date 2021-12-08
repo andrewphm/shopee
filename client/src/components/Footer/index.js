@@ -23,6 +23,9 @@ import {
   Payment,
 } from './Footer.styles';
 
+// React Router
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <Container>
@@ -53,49 +56,31 @@ const Footer = () => {
         <h3>Useful Links</h3>
         <ul>
           <li>
-            <a href="#home" alt="home">
-              Home
-            </a>
+            <Link to="/shopi-fe">Home</Link>
           </li>
           <li>
-            <a href="#cart" alt="">
-              Cart
-            </a>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <a href="#men" alt="">
-              Mens Fashion
-            </a>
+            <Link to="/products/men">Mens Fashion</Link>
           </li>
           <li>
-            <a href="#women" alt="">
-              Womens Fashion
-            </a>
+            <Link to="/products/women">Womens Fashion</Link>
           </li>
           <li>
-            <a href="#account" alt="">
-              My Account
-            </a>
+            <Link to="/account">My Account</Link>
           </li>
           <li>
-            <a href="#wish" alt="">
-              Wishlist
-            </a>
+            <Link to="/wishlist">Wishlist</Link>
           </li>
           <li>
-            <a href="#faq" alt="">
-              FAQs
-            </a>
+            <Link to="/faqs">FAQs</Link>
           </li>
           <li>
-            <a href="#shipping" alt="">
-              Shipping
-            </a>
+            <Link to="/shipping">Shipping</Link>
           </li>
           <li>
-            <a href="#terms" alt="">
-              Terms of service
-            </a>
+            <Link to="/terms">Terms of service</Link>
           </li>
         </ul>
       </Center>
