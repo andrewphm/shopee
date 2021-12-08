@@ -5,6 +5,7 @@ import Product from './pages/Product';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
+import NotFound from './pages/NotFound';
 
 // Routing
 import {
@@ -67,6 +68,7 @@ function App() {
       <Announcement />
       <NavBar />
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/shopi-fe" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
