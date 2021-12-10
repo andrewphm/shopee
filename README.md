@@ -34,6 +34,8 @@ Shopi is a fully featured e-commerce web application with authentication, conten
 
 - Responsiveness and styles
 - Improve admin dashboard analytics with aggregation of orders, users, etc.
+- Enable users to create an account with a third-party service
+- Enable users to view order history, wishlist
 
 #
 
