@@ -90,6 +90,14 @@ const apiSettings = {
       console.log(error);
     }
   },
+
+  createEmail: async (body) => {
+    try {
+      await axios.post(`${BASE_URL}newsletter`, body);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export default apiSettings;
