@@ -9,6 +9,7 @@ const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart');
 const orderRoute = require('./routes/order');
 const stripeRoute = require('./routes/stripe');
+const emailRoute = require('./routes/email');
 
 // Connect MongoDB
 
@@ -44,5 +45,8 @@ app.use('/api/auth', authRoute);
 
 // Stripe Payment
 app.use('/api/checkout', stripeRoute);
+
+// Newsletter Route
+app.use('/api/newsletter', emailRoute);
 
 app.listen(process.env.PORT || 5000, () => console.log('Server started'));
