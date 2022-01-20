@@ -1,5 +1,5 @@
 // Pages
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Login from './pages/Login';
@@ -77,8 +77,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/shopi-fe" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shopi-fe" element={<HomePage />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/products/:category/:productId" element={<Product />} />

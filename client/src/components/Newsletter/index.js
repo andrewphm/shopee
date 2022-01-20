@@ -24,7 +24,7 @@ const Newsletter = () => {
       <h1>Newsletter</h1>
       <p>Get timely updates and deals from all the products you love.</p>
       {success ? (
-        <p>Awesome, awesome deals are coming your way!</p>
+        <p>Awesome deals are coming your way!</p>
       ) : (
         <InputContainer>
           <input

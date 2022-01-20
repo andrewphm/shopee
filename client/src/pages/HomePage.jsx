@@ -3,7 +3,7 @@ import React from 'react';
 // UI components
 import { Slider, Categories, Products } from '../components/index';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Slider />
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

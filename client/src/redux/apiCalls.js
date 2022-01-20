@@ -1,7 +1,6 @@
 import { loginStart, loginFailure, loginSuccess } from './userRedux';
 
 import API from '../API';
-import { useReducer } from 'react';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
